@@ -1,0 +1,23 @@
+<body>
+  <div class="container">
+    <h1>New Game!</h1>
+    <div class="d-flex">
+      <% 10.times do |i| %>
+        <div class="m-2">
+          <button type="button" class="btn btn-primary btn-square-md"><%= @letters[i] %></button>
+        </div>
+      <% end %>
+    </div>
+    <p>What is the longest word you can find?</p>
+    <form class="mb-3" action="/score" data-turbo="false">
+      <div class="input-group mb-3">
+        <input class="form-control" type="text" name="word">
+        <div class="input-group-append">
+          <button class="btn btn-secondary" value='<%@letters%>' type="submit">Play!</button>
+        </div>
+      </div>
+      <%= hidden_field_tag :letters, @letters %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    </form>
+  </div>
+</body>
